@@ -1,0 +1,45 @@
+15.34
+
+a) 
+
+Query string constructor called three times which in turn calls Word_Query string constructor three times.
+
+The & operator calls the AndQuery constructor which takes two query objects, in turn calling the
+BinaryQuery constructor. The BinaryQuery constructor uses the Query copy constructor twice to initialise 
+its Query data members.
+
+The & operator returns a Query object using the private shared_ptr<Query_base> constructor.
+
+
+
+The | opertor calls the OrQuery constructor which takes two query objects, in turn calling the
+BinaryQuery constructor. The BinaryQuery constructor uses the Query copy constructor twice to initialise 
+its Query data members. 
+
+The | operator returns a Query object using the private shared_ptr<Query_base> constructor. 
+
+
+
+
+Finally Query copy constructor is used to create q. 
+
+
+b)
+
+q.rep() - static call which calls Query_Base::rep
+
+This Query_Base::rep is a virtual call on the shared_ptr. THis calls OrQuery::rep (technically BinaryQuery::Rep)
+
+In turn this OrQuery::rep calls Query::rep on both its query objects.
+
+One of these query objects pointers to a WordQuery and so calls WordQuery::rep virtually.
+
+The other query object points to an AndQuery and so calls AndQuery::rep virtually. (technically BinaryQuery::Rep)
+
+Again this AndQuery::rep call calls Query::rep on both its query objects.
+
+The query objects both point to WordQuerys and so both call WordQuery::rep virutally. 
+
+
+c) Well we don't know how eval works for AndQuery or OrQuery yet. Presumably it works pretty much the
+same as b). 

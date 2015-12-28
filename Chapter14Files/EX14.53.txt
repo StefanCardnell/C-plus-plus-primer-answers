@@ -1,0 +1,16 @@
+two ways
+
+s1 could convert to int, then operator+(int, double)
+
+3.14 could convert to int, then to s1, then two low-level const conversion to const SmallInt&, operator+(const SmallInt&, const SmallInt&)
+
+- In a call to an overloaded function, the rank of an additional standard conversion (if any) matters 
+only if the viable functions require the same user defined conversion. If different user-defined 
+conversions are needed, then the call is ambiguous.
+
+So it should be ambiguous according to this^
+
+Explicitly cast s1 to double
+
+double d = double(s1) + 3.14;
+Or alternatively cast 3.14 to smallInt

@@ -1,0 +1,13 @@
+when you would use lambdas (and why the standard added them)
+
+- short temporary code used to serve as a temporary function to pass as a function-object parameter
+- presents inner workings of function process to user
+- to stop creating classes for simple processes which be only used once, for instance in EX14.40 it was wasteful
+and verbose to create 3 classes for processes used only once
+
+when you would use classes
+
+- for functions with many processes that would not be ideal for the intended short style of lambdas
+- more permanent solution if we wish to re-use the function process multiple times
+- to change the inner workings of the function over time by changing data members (lambda can technically do this
+by changing capture'd variables at different times but classes keep data members neatly contained within a single object)

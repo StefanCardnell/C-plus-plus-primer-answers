@@ -1,0 +1,10 @@
+The destructor will call del(p) where del is of type DebugDelete. Since the type of del
+is known at compile time it is known that del(p) refers to the member  function 
+operator() of the class DebugDelete. Since this is also an inline function the call may be inlined.
+
+
+
+In contrast shared_ptr calls del(p) where del could be a function pointer type or whatever that essentially
+holds a reference to callable objects of a common signature but, at compile time, isn't any indication of the type of the object that gets called. The type of the object called by del(p) is not known until run-time and so
+run-time jumping occurs (although according to StackOverflow the difference in using a run-time jump, e.g. through
+a function pointer, is basically negligable: see favourites). 

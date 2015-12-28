@@ -1,0 +1,8 @@
+A function template is a blueprint for defining functions whose return type,
+parameters and definition vary depending on the template arguments supplied to create
+a particular instantiation of that function. The compiler can implictly deduce the template 
+parameter types depending on the arguments supplied to the call. 
+
+A class template is a blueprint for defining a class whose member's types and definitions 
+vary depending on the template arguments supplied to create a particular instantiation of
+that class. The compiler cannot deduce the template parameter types for a class template.

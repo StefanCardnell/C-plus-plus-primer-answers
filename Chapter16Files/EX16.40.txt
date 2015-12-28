@@ -1,0 +1,9 @@
+16.40)
+
+Yes it's legal, but it places a constraint on the fact that the type returned from the dereference
+has a type with operator+ defined for integer literals as the right hand operand. 
+
+The return type is whatever element type the expression *beg+0 yields. Presumably this would be the
+element (not reference) type of *beg. However that is not always the case. For instance *beg may be of 
+type char&, then decltype(*beg+0) return int as the char is promoted, so the return type is int. This isn't
+desirable or generic behaviour and probably would not be a good idea. 

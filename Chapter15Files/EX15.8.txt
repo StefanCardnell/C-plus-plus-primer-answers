@@ -1,0 +1,26 @@
+1)
+
+Static_type is the is the type with which a variable is declared or an expression yields. It is always known at compile-time.
+
+Dynamic type is the type of the object in memory that the variable or expression represents. It is not known until run-time.
+
+
+2)
+
+When a pointer to base class points to a derived class object.
+When a reference to a base class references a derived class object.
+
+Quote a;
+Bulk_Quote b;
+Limited_Quote c;
+
+
+Quote* p = &b;
+Quote* q = &c;
+Bulk_Quote& r = c
+
+3)
+
+ifstream inherits from istream. Hence parameter of read, which takes a reference to istream can take any class object
+that inherits from istream, thus ifstream works. Of course the read function only uses the istream interface which the 
+ifstream object contains as well. 

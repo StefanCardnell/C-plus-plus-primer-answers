@@ -1,0 +1,31 @@
+1) legal
+2) illegal - Priv_Derv inherits privately from Base so does not provide user access to public members
+3) illegal - Prot_Derv inherits protectely from Base, so Base's public members are not accessible to users
+4) legal
+5) illegal - Derived_from_Private cannot access public/protected Base members nor provide the public members in the interface
+6) illegal - Derived_from_Protected cannot provide Base public members in interface
+
+
+For class base:
+legal
+
+For class Sneaky:
+legal (sneaky derived-to-base conversion)
+
+For class pub_derv:
+legal
+
+For class priv_derv:
+legal - derived-to-base conversion still possible in member function
+
+For class prot_derv:
+legal - same reason as above
+
+For class derived_from_public:
+legal
+
+For class derived_from_private:
+illegal since this class cannot access public members of base
+
+For class derived_from_protected:
+legal since this class can still access public members of base

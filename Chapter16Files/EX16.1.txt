@@ -1,0 +1,2 @@
+Instantiation is where the compiler generates the code for the specific version of the template that was called by the 
+user. The compiler generates an instance of the template using the template arguments in place of the template parameters

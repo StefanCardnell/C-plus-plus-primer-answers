@@ -1,0 +1,38 @@
+a)
+
+Query(s1) creates a Query object pointing to a WordQuery
+Query(s2) creates a Query object pointing to a WordQuery
+Query(s3) creates a Query object pointing to a WordQuery
+
+~Query(s3) creates a Query object pointing to a NotQuery (which contains Query(s3))
+
+Query(s2) & ~Query(s3) creates a Query object pointing to an AndQuery (which contains Query(s2) and ~Query(s3))
+
+The entire expression creates a Query object pointing to an OrQuery (which contains Query(s2) and the above Query object).
+
+
+
+
+b)
+
+same as above! parenthesis do not change original precedence here
+
+
+
+
+c) 
+
+
+
+Query(s1) creates a Query object pointing to a WordQuery
+Query(s2) creates a Query object pointing to a WordQuery
+Query(s3) creates a Query object pointing to a WordQuery
+Query(s4) creates a Query object pointing to a WordQuery
+
+
+
+Query(s1) & Query(s2) creates a Query object pointing to an AndQuery (which contains Query(s1) and Query(s2))
+Query(s2) & Query(s4) creates a Query object pointing to an AndQuery (which contains Query(s3) and Query(s4))
+
+
+The entire expession creates a Query object pointing to an OrQuery (which holds the above two Query objects)

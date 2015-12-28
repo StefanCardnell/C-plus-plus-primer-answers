@@ -1,0 +1,11 @@
+Override is never mandatory, it only forces a check to the compiler that the function 
+it is being used on intends to override a previously defined virtual function. It can be
+added for clarity for class authors as well.
+
+Final prevents any further overriding of this function. It can only be used
+on functions that are virtual anyway and hence forces the compiler to check 
+that we are using it on a virtual function. As a result, final incorporates
+override in its functionality. So if final is declared, override need not be. 
+
+Class designers may want to declare both override and final for clarity to other readers
+of the class code - although the intentions should be clear from a single "Final".

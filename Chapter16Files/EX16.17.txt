@@ -1,0 +1,4 @@
+For declaring type parameters, these is no difference between using typename or class.
+
+
+However typename has an alternate use. It is used to declare that a name obtained using the scope operator through a template parameter (e.g. T::value_type) is indeed a type, since the compiler cannot verify this itself until instantiation.

@@ -1,0 +1,6 @@
+Because the algorithms work on iterators, not containers, and so cannot directly change the size of the container.
+
+Why do they work with iterators? So that the algorithms can be as general as possible and work with all container types.
+
+Also any method an algorithm would use to change the size of a container could limit its use to certain containers. i.e. if an algorithm were to use
+push_front then it means it cannot work with vectors. It might hard to change container size while also being general and inclusive to all container types.

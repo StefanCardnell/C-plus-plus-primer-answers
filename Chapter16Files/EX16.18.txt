@@ -1,0 +1,5 @@
+1) Error: U must be preceded by typename or class
+2) Error: T is a type and so "int &T" doesn't make sense. Either wanted "int&" or "T&"
+3) Error: inline must come after angled brackets
+4) Error: No return type.
+5) Fine, template parameter name hides the use of of the typedef Ctype

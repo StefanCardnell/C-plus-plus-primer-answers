@@ -1,0 +1,7 @@
+lvalue references can bind to expressions that return an lvalue
+
+EXPRESSIONS THAT RETURN AN LVALUE: VARIABLE EXPRESSIONS. functions that return lvalue references, assignment, subscript, dereference and prefix increment/decrement operators. 
+
+rvalue references can bind to expressions that require conversions, literal, temporaries, and expressions that return an rvalue
+
+EXPRESSIONS THAT RETURN AN RVALUE: functions that return a nonreference type, arithmetic, relational, bitwise, postfix increment/decrement operators. 

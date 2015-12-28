@@ -1,0 +1,6 @@
+Most types support !=. It is easy conceptually to define an equality operator for a type.
+
+On the other hand < may be an ambiguous operation for most types and so won't be defined as often.
+
+As a result, using != instead of < means we do not have to worry too much about the type we are using
+in our code. It also allows our templates to achieve a greater type independence. 

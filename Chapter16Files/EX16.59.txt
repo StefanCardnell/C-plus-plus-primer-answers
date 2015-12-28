@@ -1,0 +1,22 @@
+EX 16.59)
+
+
+s is a lvalue string.
+
+Hence in emplace_back(s), Args has size 1 containing a template type parameter of type string& (since the function parameter was an rvalue reference to Args) and by reference collapsing args has size 1 containing a function parameter of type string& bound to s. 
+
+std::forward<Args>(args)... then expands the template parameter pack Args and the function parameter pack args inside
+the construct member function creating;
+
+alloc.construct(firstFree++, std::forward<string&>(s))
+
+By reference collapsing std::forward<string&>(s) results in an lvalue reference to s. Hence the new string is copy-constructed from s in the memory. 
+
+EX 16.60)
+
+
+make_shared is a variadic template function which obviously works similar to our emplace_back functions.
+
+It expands the parameter packs in order to construct a heap-allocated object of type T, where T is the explicit template
+parameter supplied by the user. For instance by doing new T(std::forward<Args>(args)...), making sure to forward so that type
+information is preserved. This newly allocated object of type T is bound to a shared_ptr and returned.

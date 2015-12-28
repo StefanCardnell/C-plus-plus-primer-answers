@@ -1,0 +1,24 @@
+16.34)
+
+No, "hi" causes T to be of type char array of size 3 whereas "world" causes T to be of type 
+char array of size 6. Since the types don't match this is an error.
+
+Fine, the types match (T is char array of size 4).
+
+
+16.35)
+
+a) fine, T deduced as type char, 'c' is converted to int
+b) fine, T is deduced as type double, f is converted to int
+c) fine, T deduced as type char
+d) error, T cannot either double or float so an error is caused
+
+16.36)
+
+
+f1(p1, p2); //fine, T deduced as int*
+f2(p1, p2); //fine, T1 and T2 deduced as int&
+f1(cp1, cp2); //fine, T deduced as type const int*
+f2(cp1, cp2); //fine, T1 and T2 deduced as type const int*
+f1(p1, cp1); //in error I believe, T deduced as int* or const int*
+f2(p1, cp1); //fine, T1 deduced as int* and T2 as const int*

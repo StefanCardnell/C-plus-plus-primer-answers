@@ -1,0 +1,14 @@
+Vector has many constructors that use the default constructor of its element type.
+
+For instance 
+
+vector<string> a(10);
+
+Uses the string default constructor to create 10 default-initialised strings.
+
+
+However when explicitly instantiating a class all the member functions are defined. If NoDefault
+were the element type the constructor that took a single int would be defined but it requires use
+of NoDefault's default constructor, which does not exist. Hence it is not possible to explicitly 
+instantiate such a class. 
+

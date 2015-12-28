@@ -1,0 +1,11 @@
+16.37)
+
+Yes, as long as you explicitly specified the template argument. e.g. max<int>(2,3.2)
+
+16.38)
+
+The argument is probably need for the return type which cannot be deduced from the
+arguments supplied in the function call (i.e. make_shared<int> returns a shared_ptr<int>).
+
+Alternatively the function body of make_shared needs to know what type to allocate to dynamic
+memory which is not deducible from the arguments supplied.

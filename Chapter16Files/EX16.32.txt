@@ -1,0 +1,10 @@
+16.32)
+
+In a call to a function template, template argument deduction attempts to deduce the 
+values of the template arguments from the types of the function arguments supplied in the call. 
+
+16.33) 
+
+Low-level const conversion.
+
+Array/Function to pointer conversion.

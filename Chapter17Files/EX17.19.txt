@@ -1,0 +1,3 @@
+17.19)
+
+If the sub_string is not matched then str() returns the empty string. Hence we can compre m[4] and m[6] without worrying whether they were matched or not. (In this case, if m[4] is not match then there was no separator, and we check that m[6] is also empty [and has no separator]). 

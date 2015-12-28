@@ -1,0 +1,28 @@
+16.42)
+
+T is int& and val is int&
+T is const int& and val is const int&
+T is int and val is int&&
+
+16.43) The expression returns an lvalue of type int, hence T is type int& (and val is int&)
+
+
+16.44 i)
+
+T is int
+T is int (top level const is ignored)
+T is int
+
+ii)
+
+T is int
+T is int
+T is int
+
+16.45)
+
+If we call it on 42 then T is int and val is int&&. So vector<T> becomes vector<int>
+
+If we call it on a variable of type int then T is int& and val is int&. So vector<T> becomes vector<int&> which
+throws up an error (cannot allow vector of references since the element type must be assignable and vector<T>
+uses T* in its implementation, which cannot work if T is a reference type).

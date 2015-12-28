@@ -1,0 +1,61 @@
+g(42):
+
+candidate function is only g<int> since g(T*) does not have successful template argument deduction
+
+
+
+
+g(p) (p is int*):
+
+g<int*>(int*) and g<int>(int*) are viable functions. Normal function matching does not work. g(T*) is more specialised so it is the better match.
+
+
+
+
+
+g(ci) (ci is const int):
+
+g<int>(int) is the only viable function, top level const is ignored.
+
+
+
+
+
+g(p2) (p2 is const int*):
+
+g<const int*>(const int*) and g<const int>(const int*) are viable function. Normal function matching does not work. Again g(T*) is more specilaised to it is a better match
+
+
+
+f(42):
+
+f<int>(int) is the only viable function again
+
+
+
+
+f(p):
+
+f<int*>(int*) and f<int>(const int*) are the viable functions. By normal function matching
+f<int*>(int*) is a better match though because no low-level const conversion is needed
+
+
+
+
+f(ci):
+
+f<int>(int) is the only viable function again
+
+
+
+
+f(p2):
+
+f<const int*>(const int*) and f<int>(const int*) are the viable functions. Normal function matching does not work. f(const T*) is a better match though because it is more specialised.
+
+
+
+template <typename T> void f(T) { cout << "f(T)" << endl;}
+template <typename T> void f(const T*)  { cout << "f(const T*)" << endl;}
+template <typename T> void g(T)  { cout << "g(T)" << endl;}
+template <typename T> void g(T*)  { cout << "g(T*)" << endl;}

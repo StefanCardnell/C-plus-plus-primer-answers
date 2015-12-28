@@ -1,0 +1,23 @@
+16.66)
+
+Advantages to specialisation/Disadvantages to overloading:
+
+1) Makes sense programatically to just make them specialisations rather than multiple overloaded functions
+2) Reduces overload resolution surprises by making sure there can only be two functions to choose from and hence
+makes an easier job of understanding the function matching.
+
+
+
+Disadvantages to specialisation/Advantages to overloading:
+
+1) It's not always clear which template the specialisations is an instantiation of. Overloading removes this worry.
+2) "It is an error for a program to use a specialisation and an instantiation of the original template with the same set of template arguments. However, it is an error that the compiler is unlikely to detect" - by using specialisations instead of overloading we bring about the potential for this error to occur if we don't set up our declarations correctly. 
+3) By reducing it to only two candidate functions we bring the possibility of more ambiguous function calls. 
+
+
+
+16.67)
+
+The process of function matching is definitely changed. Instead of the candidate functions being the collective five debug_reps it is simply reduced to the two function templates, because specialisations instantiate a template and do not overload it. 
+
+This change in function matching does not affect the result of the program. c-style character strings and string literals get passed to the T* template which then get passed to the specialisations, just as before. 

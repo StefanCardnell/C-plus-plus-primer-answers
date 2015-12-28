@@ -1,0 +1,25 @@
+Advantages of variadic errorMsg:
+
+1) We can have arguments of varying type and number.
+2) More flexible use. 
+
+
+Disadvantages of variadic errorMsg:
+
+1) Inherently more complicated approach.
+2) A heck of a lot more verbose, print functions are needed, debug_rep function templates
+are needed, etc.
+3) In combination with above, our program may not function correctly if we did not
+include template declarations at the right place. 
+
+
+
+
+
+Advantages of initializerList errorMsg:
+
+1) Much simpler approach.
+
+Disadvantages of initializerList errorMsg:
+
+1) We can only have a varying number of arguments for a pre-defined type, probably string.

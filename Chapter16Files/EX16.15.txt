@@ -1,0 +1,10 @@
+16.13:
+
+Equality and relational operators obtain one-to-one friendship, since only those operators
+with the same template parameters as the class need access to the private members. 
+
+16.15:
+
+Same as before. One-to-one friendship. Only those operators with the same template paremeters
+as the class needs access to the private members. operator<< <1,1> for instance doesn't need
+any private access to oeprator<< <1,2>.

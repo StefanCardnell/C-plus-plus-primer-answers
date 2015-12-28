@@ -1,0 +1,7 @@
+Explicit instantiation declaration that prevents code being generated from the template vector
+for the class vector<string>. It assumes a corresponding explicit instantiation definition
+for vector<string> will appear later in the program.
+
+
+Explicit instantiation definition that generates the class code for vector<Sales_data> from the
+template vector in that translation unit. This includes the definition of all member functions for that class.

@@ -1,0 +1,9 @@
+EX 17.31)
+
+Then b and e, the random number engine and the random number distribution class, would be destroyed and recreated on  each iteration. 
+
+Since random number generators generate the same sequence every time, b(e) would always output the same value on each iteration. We must define b and e outside the loop so that the objects aren't destroyed and retain state through the iterations.
+
+EX 17.32)
+
+resp would not be in scope when we enter the while condition, and it would not compile. 

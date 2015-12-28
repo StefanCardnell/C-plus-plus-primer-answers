@@ -1,0 +1,16 @@
+17.7)
+
+The method using a struct seems a bit unnecessary, the struct will only be used in this specific circumstance and never again, better to use a "quick and dirty" data structure" like tuple or pair. 
+
+The method using a pair probably makes the most sense. The second element is another pair which indicates that those elements are strongly related and connected - which is true since they are starting and ending iterators for a vector. How the second and third elements are related is not indicated by the tuple and it just having three independent elements.
+
+It also feels natural to iterate through the vector using the pair members first and second than get<i>(x). 
+
+However it would be a pain to restructure the code using the pairs if we ever decide we need a fourth member to use.
+
+Really though, these are the only differences and it doens't matter too much which is used.  
+
+
+17.8)
+
+Had to we Sales_Data() then the "bookNo" member of the final accumulated Sales_Data element would still be the default value, i.e. ""

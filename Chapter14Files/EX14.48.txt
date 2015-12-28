@@ -1,0 +1,5 @@
+What would bool for Date or Book test? At best false could be returned if a Date or Book is the default value, and true otherwise, but for what reason? This could be a hinderance for some designed programs. It is not immediately clear what a bool conversion would entail, and so it might be best not to define it. 
+
+
+Regardless conversions to bool should normally be explicit to avoid unwanted arithmetic converisons. As explained
+in 14.9.1.

@@ -1,0 +1,7 @@
+If we used just [^c]ei instead then you probably would not notice too much, but:
+
+If we were to use a smatch object then the str() member would only get matched to the [^c]ei part and
+not the alphanumeric characters before and after those three characters. e.g. weird would output "wei"
+
+We could add anything before and after [^c]ei and it would work. E.g. 9294wei9231 would return
+"violates the rule" even though it's not a word. 

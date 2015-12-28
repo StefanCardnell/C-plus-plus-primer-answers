@@ -1,0 +1,15 @@
+a) bitset<64> bitvec(32)
+
+bitvec represents 64 bits. 32 is an integer literal of value with bit representation of 10000. Whatever the size
+of integer literals this gets converted to an unsigned long-long. So bitvec is the has low-order bit pattern 10000 and the higher order bits are zero.
+
+
+b) bitset<32> bv(1010101) 
+
+bv represents 32 bits. I guess the point here is that one might expect bv to be set to the bit pattern
+1010101 (the integer 85). Except 1010101 is an integer literal, and will be converted to its 21-bit representation
+of 011110110100110110101. The remaining 11 higher-order bits are set to 0.
+
+c) This will use the string constructor to create an 8-bit representation. However if bstr has any character
+other than '1' or '0' it will throw an invalid_argument error. If bstr consists of just 1 and 0, then the first 8 characters of bstr will inversely create the lower-order bits of bv. If there are less than 8 characters in bv then 
+the higher-order bits of bv are set to 0.

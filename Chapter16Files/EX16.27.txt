@@ -1,0 +1,14 @@
+a) No - A parameter type of an only declared function need not be defined.
+b) No - A reference, thus I doubt stack<double> needs to be defined
+c) Yes - Because si is an object in this case, a class need the type of its data member to be defined so that
+it knows how much storage the data member needs.
+d) No - Type does not need to be defined for a pointer.
+e) Yes - Yes, dereferencing a pointer to the type. Hence the type needs to be defined to return it in an expression.
+f) Hard one. Didn't know. The answer is yes. I'm guessing the compiler can only could not know the size-of a class-template that is not defined since it varies depending on template argument. So it must be instantiated to work out the size.
+
+See stack-overflow question (AntiElephant) for a way to check these answers. 
+
+template <typename T> class Stack{
+    template<class> struct always_false : std::false_type {};
+    static_assert(always_false<T>::value, "If this fires, 'Stack' is instantiated");
+}; 

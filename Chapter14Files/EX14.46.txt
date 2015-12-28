@@ -1,0 +1,12 @@
+operator string() const { return BookNo;}
+operator double() const { return revenue;}
+
+
+string version could be defined - it should be obvious what such a conversion entails. No real need for explicit since it could only be used where a string is expected - since the compiler only applies one class-type conversion at a time, it avoids surprising conversions. (e.g. Sales_Data -> string -> bool cannot happen). 
+
+
+
+
+I do not think the double conversion should be defined. Those not familiar with the class may not understand what a double conversion would mean. Moreso, if they knew the class members it might not be clear which or what would be returned - units_Sold, revenue, maybe even the average price.
+
+If double conversion were to be defined it should probably be explicit to avoid undesired arithmetic conversions (e.g char c = Sales_Data("test", 2, 3) would work, but what would it mean?). But, again, if it can only be used in rare explicit conversions, then maybe it shouldn't even be defined in the first place.

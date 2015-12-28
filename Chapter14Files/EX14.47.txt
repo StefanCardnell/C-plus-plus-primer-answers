@@ -1,0 +1,3 @@
+the first is a conversion to (const int) that can only be applied to non-const Integral objects. The top level const is probably ignored though.
+
+the second is a conversion to (int) that can be applied to any const/non-const Integral object.

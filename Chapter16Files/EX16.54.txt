@@ -1,0 +1,10 @@
+EX 16.54)
+
+Error is thrown as usual as print(ostream&, const class&) is instantiated.
+
+
+16.55) 
+
+The book warns against infinite recursion, but this is not the case. The variadic version of print will call print passing only two arguments. In this case the variadic version of print is the only one in scope and it is perfectly viable to call it with only two arguments because the parameter pack can be empty.
+
+So the variadic version is called instead of the non-variadic. Lastly print(os, rest...) is called except rest this time is empty, so it is essentially a call to print(os) which produces no candidate functions and we receive a compilation error.

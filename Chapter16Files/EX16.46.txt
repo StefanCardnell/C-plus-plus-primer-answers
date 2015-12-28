@@ -1,0 +1,10 @@
+alloc.constructor(dest++, std::move(*elem++)) will more than likely do a command like
+
+    string s(std::move(*elem++))
+
+in order to create a string in the new memory. All that happens here is the string lvalue returned from *elem++ is passed
+to the template function std::move and std::move<string&> is instantiated, which returns an explcitly casted rvalue
+reference to the lvalue that was passed. The move-constructor then uses this rvalue to extract the properties ("clobber") from
+*elem++ in order to construct s. 
+
+The details of the loop are not really important to the purpose of the question. 

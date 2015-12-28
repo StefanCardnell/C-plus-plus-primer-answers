@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1449697427 source:f:\hdd documents\hdd users\stefan\documents\c++\c++ primer\primer\chapter17files\untitled1.cpp
+
+1449697449 source:f:\hdd documents\hdd users\stefan\documents\c++\c++ primer\primer\chapter17files\untitled2.cpp
+
+1450651320 source:f:\hdd documents\hdd users\stefan\documents\c++\c++ primer\primer\chapter17files\test.cpp
+	<iostream>
+	<fstream>
+	<cstring>
+
+1449773570 source:f:\hdd documents\hdd users\stefan\documents\c++\c++ primer\primer\chapter17files\ex17.17.cpp
+	<iostream>
+	<string>
+	<regex>
+
+1451243248 source:d:\hdd documents\hdd users\stefan\documents\c++\c++ primer\primer\chapter18files\test.cpp
+	<iostream>
+

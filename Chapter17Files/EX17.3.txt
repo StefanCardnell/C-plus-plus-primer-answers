@@ -1,0 +1,16 @@
+I think the original design is better
+
+1) By designing it as a class we can add and use member functions naturally. In this case we have to define
+ordinary functions (such as begin and end) to do operations that we would normally expect member functions to
+supply.
+
+2) We would have to supply information with textQuery about the nature of queryResult. i.e. we might have to 
+tell them it's a tuple that holds a set of linenumbers (so they can understand what the begin and end functions
+actually do).
+
+3) Might be harder to change the design of queryResult, e.g. if we wanted to add another data member. 
+
+
+
+
+However this design is simpler in that it requires less code and deals with the implementation of less classes.

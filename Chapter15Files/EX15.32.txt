@@ -1,0 +1,19 @@
+Query:
+
+No copy control members are defined. As a result we get synthesised versions.
+
+ 
+Copy: Will simply copy the shared_ptr across. Reference count of shared_ptr is increased.
+Assign: Will simply assign the shared_ptr. Reference count of shared_ptr is increased.
+Move: Will simply move the shared_ptr. New shared_ptr points to old. Reference count remains same. (in both constructor/assign cases).
+Destruct: Will destruct the shared_ptr. Decreasing reference count. 
+
+
+
+Query_base:
+
+Destructor was defined. Therefore the move constructor/assignment operators will not be synthesised. Nor will the derived classes have move operations.
+
+Query_base objects destruct/copy-construct/copy-assign with default behaviour. Although Query_base has no data members
+so the copy operations do no work. 
+
