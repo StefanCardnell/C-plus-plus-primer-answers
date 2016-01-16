@@ -1,0 +1,23 @@
+18.11)
+
+Not entirely sure about this answer.
+
+It is certainly okay to throw another exception outside of a catch clause so there this is not an issue about "two" exceptions being handled at once.
+
+Maybe then, the importance might be that while handling an error we do not want further unexpected errors to occur? Throws inside catch clauses are mainly 
+intended for sending the exception object further up the call chain. A user may receive an error from deep in his program and does not want to worry that 
+the error caught has to be associated with its own try block. 
+
+On top of that, if a second error is thrown we have lost all information about the first thrown and the entire catch effort was wasted.
+
+Or maybe what() having its own throw may also lead to recursive effects (e.g. what() throws an exception, then we catch this exception and call what() 
+but this then throws, and so on) meaning it might become impossible to handle any errors?
+
+Indeed following on from this last remark. When an exception is thrown that is not caught by any handler then terminate() is called which also shows
+the output of "what()" on the console. If what() also then throws, we see the error message "terminate called recursively" which, who knows, could
+be fatal?
+
+
+
+There is also the possibility that this is a trick question. The exceptions are listed as noexcept. If they were to throw then terminate
+would be called.

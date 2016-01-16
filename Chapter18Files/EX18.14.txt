@@ -1,0 +1,5 @@
+EX 18.14)
+
+mathLib::MatrixLib::matrix mathLib::MatrixLib::operator*(const matrix&, const matrix&){}
+
+Once it sees the qualified name we are in the scope of the namespace, so the parameters can simply be "matrix". 

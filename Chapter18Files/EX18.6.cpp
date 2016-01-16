@@ -44,15 +44,30 @@
 
 
 #include <iostream>
-#include <string>
+#include <cstdlib>
+
+using namespace std;
+
+class exceptionType { };
 
 
 int main(){
 
+    exceptionType toThrow;
+
+    try{ throw &toThrow; //throw a pointer to toThrow
+    } catch(exceptionType *pet) {
+        cout << "First catch" << endl;
+    }
+
+    try{ throw 2; //we can throw anything we like since we have a catch-all handler
+    } catch(...) { cout << "Second catch" << endl;
+    }
+
+    typedef int EXCPTYPE;
+
+    try{ int x = 5; throw x; //no difficulty here, EXCPTYPE is just another name for int. So we throw an int.
+    } catch(EXCPTYPE) { cout << "Third catch" << endl;
+    }
 
 }
-
-
-
-
-

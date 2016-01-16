@@ -44,10 +44,21 @@
 
 
 #include <iostream>
-#include <string>
+#include "Sales_data.h"
+
+using namespace std;
 
 
 int main(){
+
+
+    Sales_data a("xxx", 2, 5), b("yyy", 5, 3);
+
+    try{
+        a+b;
+    } catch(const isbn_mismatch& err) {  cout << "Error caught, what(): " << err.what() << " left isbn:" << err.left << "  right isbn:" << err.right << endl;}
+
+    a+b;
 
 
 }

@@ -44,15 +44,31 @@
 
 
 #include <iostream>
-#include <string>
+#include <fstream>
+#include <memory>
+#include <vector>
 
+using namespace std;
+
+void exercise1(int *b, int *e)
+{
+    vector<int> v(b, e);
+    unique_ptr<int[]> p(new int[v.size()]);
+    ifstream in("ints");
+    // exception occurs here
+}
+
+void exercise2(int *b, int *e)
+{
+    vector<int> v(b, e);
+    shared_ptr<int> p(new int[v.size()], [](int* x){ delete [] x;});
+    ifstream in("ints");
+    // exception occurs here
+}
 
 int main(){
 
 
+
+
 }
-
-
-
-
-

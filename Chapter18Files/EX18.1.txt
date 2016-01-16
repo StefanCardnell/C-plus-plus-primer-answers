@@ -1,0 +1,26 @@
+18.1)
+
+a) Type is range_error
+
+b) Static type of expression *p is exception. So exception object's type is exception too, despite p pointing to 
+a range_error object. The object thrown (r) is sliced down.
+
+throw p would mean we would be throwing a pointer to exception. i.e. The exception object's type is expection*. 
+Presumably in this example r is in the same block scope as p, so when p is thrown it becomes an invalid pointer
+since r is deleted. This is an error.
+
+
+18.2)
+
+An exception occurs and presumably there is no catch clauses within the function. So the function
+exits prematurely and continues up the call chain where a catch clause may be found. The concern is
+how the objects created in the function are destroyed, if at all:
+
+i) The pointer-to-int function parameters b and e are destroyed like normal.
+ii) The vector v will have its destructor called, for which it will deallocate any memory
+used to store copies of the elements between pointers b and e.
+iii) There is a memory leak here since the array elements allocated on the heap are never deleted.
+iv) The ifstream destructor is called on in. The file is closed.
+
+18.3) We can use the smart pointers unique_ptr (more natural) or shared_ptr (requires supplied deleter) to control
+resource allocation. 

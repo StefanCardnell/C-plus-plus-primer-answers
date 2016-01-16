@@ -1,0 +1,11 @@
+18.13)
+
+We can use unnamed spaces to keep variables local to the file. 
+
+We may have variables that we wish to be used by multiple functions in the same file, and so we declare
+it in the global namespace. When we declare a non-const variable in the global namespace there may be linker 
+errors as we compile with other source files that have variables of the same name that are also in global scope. 
+By placing these variables in unnamed namespaces we ensure they are "inivisible" outside of the source file.
+
+In general, unnamed namespaces are intended to prevent name clashes of global names across source files.
+This prevents accidentally violating the one definition rule and causing linker errors.

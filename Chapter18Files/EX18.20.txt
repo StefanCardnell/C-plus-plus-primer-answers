@@ -1,0 +1,56 @@
+18.20)
+
+
+Candidate:
+
+All the computes, even those from primerLib, are candidate functions.
+
+
+
+Viable:
+
+compute(const void*)
+compute(int)
+compute(double, double = 3.4)
+compute(char*, char* = 0)
+
+are the viable functions.
+
+
+
+
+Converions
+
+
+compute(const void*) requires pointer conversion
+compute(int) requires no conversion
+compute(double, double = 3.4) requires arithmetic conversion
+compute(char*, char* = 0) requires pointer conversion
+
+
+compute(int) gets chosen
+
+
+
+
+
+
+"What would happen if the using declaration were located in main before the call
+to compute? Answer the same questions as before." - I'll assume he meant located in "f()", not main.
+
+In this case the compute functions from primerLib get brought in to scope and hide the existing 
+declarations for that name in the outer scope.
+
+Candidate:
+
+compute()
+compute(const void*)
+
+
+
+Viable:
+
+compute(const void*)
+
+
+This one gets chosen^. 

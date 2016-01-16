@@ -1,0 +1,45 @@
+Predictions.
+
+Declarations)
+
+Position 1)
+
+The using declaration for ivar will cause a compiler error because ivar is defined in the global scope.
+The using declarations for dvar and limit are fine and are accessible without qualification for the rest
+of the source file.
+
+double dvar = 3.1416 //hides dvar from the using declaration in the global scope.
+int iobj = limit+1 // uses the limit from Exercise
+++ivar; //no comment since ivar is an error anyway
+++::ivar;
+
+Position 2)
+
+The definition of double dvar = 3.1416 will cause a compiler error because this causes a name conflict
+with the using declaration of dvar from exercise.
+
+The using declarations for ivar and limit are fine and are accessible without qualification for the rest
+of manip.
+
+The using declaration for ivar hides the definition of ivar in the global scope.
+
+int iobj = limit + 1  //uses limit from Exercise and iobj has value 1001
+++ivar //adds 1 to ivar defined in Exercise
+++::ivar //adds 1 to ivar defined in the global scope since we qualify explicitly.
+
+
+
+
+
+Directives:
+
+Position 1)
+
+"Brings" Exercise namespace to this position. There is a name conflict between the two ivars which is permitted
+but any use of ivar unqualified will be ambigious. This is exactly what happens with ++ivar. ++::ivar is fine since
+it explicitly adds to the global scope ivar. 
+
+Position 2)
+
+"Brings" Exercise namespace to the common namespace: global scope. It does not bring it to the scope of manip. Thus, 
+this is exactly like Position 1) and we face the same issues with ivar.

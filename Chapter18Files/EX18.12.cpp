@@ -42,12 +42,40 @@
 //-D is to define preprocessor variables at the top of files (e.g. -D NDEBUG)
 //-std=c++11 for C++11 support
 
-
 #include <iostream>
 #include <string>
+#include "Query.h"
+#include "textQuery.h"
 
+//Query and textQuery were changed to be in chapter15 and chapter12 namespaces respectively
 
 int main(){
+
+//    using chapter12::textQuery;
+//    using chapter12::queryResult;
+//    using chapter12::print;
+//    using chapter15::Query;
+
+    using namespace chapter12;
+    using namespace chapter15;
+
+    std::ifstream input("QueryTestFile.txt");
+
+    if(!input){
+        std::cout << "Could not open test.txt. Exiting." << std::endl;
+        return -1;
+    }
+
+    textQuery lines(input);
+
+    input.close();
+
+    Query q = ~Query("bird") & ~Query("wind");
+
+    queryResult final = q.eval(lines);
+
+    std::cout << "Executing Query for: " << q << std::endl;
+    print(std::cout, final);
 
 
 }

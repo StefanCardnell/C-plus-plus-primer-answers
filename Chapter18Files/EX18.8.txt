@@ -1,0 +1,11 @@
+The classes that were changed were:
+
+Blob.hpp
+Sales_data.h
+StrBlob.h
+strVec.h
+Vec.hpp
+Query.h
+
+
+Comments were left adding my thoughts about noexcept.

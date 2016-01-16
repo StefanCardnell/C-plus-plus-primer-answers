@@ -1,0 +1,16 @@
+The idea is to to order the catch clauses from the most derived type to the least derived.
+
+Problems faced here:
+
+i) Exception, the base class (direct or indirect) of all exception types appears as the type of the
+first catch clause parameter. Hence the runtime_error and overflow_error catch clauses are never used.
+
+ii) Overflow_error appears after the runtime_error clause, from which it derives.
+
+From most derived to least, it should look like:
+
+try {
+
+} catch(overflow_error eobj) {} 
+catch(const runtime_error &re) {} 
+catch(exception) { }

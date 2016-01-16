@@ -44,15 +44,17 @@
 
 
 #include <iostream>
-#include <string>
+#include <cstdlib>
 
+using namespace std;
 
 int main(){
 
+    try{
+        throw runtime_error("WOAH DUDE");
+    } catch(exception& err){ //reference type: this can catch and of the exception types. Polymorphism occurs here (derived-to-base conversion)
+        cout << err.what() << endl; //virtual call to what();
+        abort();
+    }
 
 }
-
-
-
-
-
