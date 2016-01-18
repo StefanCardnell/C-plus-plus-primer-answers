@@ -10,4 +10,4 @@ I have published this with the intent that people may cross-check their answers 
 
 I'm not interested in editing the code in these answers so the programs are 100% efficient and effective. I am only interested in answering the question asked, but if an answer to a question is just plain wrong (or if it works but misses the purpose of the question), please let me know. 
 
-Chapters 18 and 19 are work in progress.
+Chapters 19 is work in progress.
