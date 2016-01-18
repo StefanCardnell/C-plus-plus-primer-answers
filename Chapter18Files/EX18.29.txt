@@ -1,0 +1,36 @@
+EX 18.29)
+
+Predictions:
+
+(a) The virtually inherited class constructors always run first. 
+
+The only virtual class is Base, so its constructor is run first. This constructor first constructs its Class part
+before finishing the Base part. 
+
+After that, everything is constructed in its normal order. 
+
+The Final constructor runs, which first runs the MI constructor, which in turn first runs the D1 constructor. The Base part is already constructed
+so the D1 constructor finishes. Then the D2 constructor is run and, again, finishes. Then the MI constructor finishes. The Class constructor
+runs and finishes and lastly the final class finishes.
+
+So the parts are constructed in the following order:
+
+Class -> Base -> D1 -> D2 -> MI -> Class -> Final.
+
+Destructors would run in reverse order.
+
+Final -> Class -> MI -> D2 -> D1 -> Base -> Class.
+
+
+(b) A Final object has only one Base part, but two Class parts (the Class part from Base and the Class in Final's
+derivation list).
+
+(c)
+
+i) Error. Base inherits from Class, not the other way around.
+
+ii) Don't know because Final has two parts, what happens here? (Having checked, Class is an ambiguous Base so the conversion does not happen). 
+
+iii) Error, MI inherits from Base, not the other way around.
+
+iv) Fine, MI inherits from D2. 

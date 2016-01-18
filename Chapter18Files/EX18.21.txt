@@ -1,0 +1,25 @@
+18.21)
+
+a) CADVehicle multiply inherits from CAD and Vehicle. It publicly interits from CAD and privately (implicitly) inherits from Vehicle. 
+
+b) Error, a base class may only appear once in the derivation list. 
+
+c) Class iostream multiply inherits from isteam and ostream, both publicly. 
+
+
+
+18.22)
+
+Mi beings by running the C default constructor, which in turn begins by running the B default constructor
+which in turn begins by running the A constructor. Once the A constructor is finished, the B constructor
+continues running and finishes, and then the C constructor continues running and finishes.
+
+Next, mi runs the Z default constructor which in turn begins by running the X default constructor. Once the X constructor 
+finishes the Z constructor then begins the Y default constructor. When the Y constructor finishes the Z constructor continues
+running and finishes.
+
+Finally, once the Z constuctor finishes the MI default constructor continues and finishes.
+
+So the order of subpart construction is;
+
+A -> B -> C -> X -> Y -> Z -> MI

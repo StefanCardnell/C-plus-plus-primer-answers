@@ -1,0 +1,23 @@
+18.28)
+
+Without qualification:
+
+Bar. This name is overriden only once, by the class Derived1. So this one (void bar(char)) is
+found by name lookup when Bar is used without qualification.
+
+ival. The name is overriden only once, by the class Derived2. So this one is found by name lookup
+when ival is used without qualification. 
+
+
+
+
+
+
+
+With qualification:
+
+cval. It is defined in both Derived1 and Derived2, which VMI inherits directly from. Hence this
+is ambiguous (by 18.3.3) without qualification.
+
+foo. It is defined in both Derived1 and Derived2, which VMI inherits directly from. Hence this
+is ambiguous (by 18.3.3) without qualification. 

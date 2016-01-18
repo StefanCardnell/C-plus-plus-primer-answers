@@ -44,9 +44,46 @@
 
 
 #include <iostream>
+#include <string>
+
+class Base1{
+public:
+    virtual void print() {std::cout << "Base1::print()" << std::endl;}
+    virtual ~Base1() { std::cout << "Base1::~Base1()" << std::endl;}
+};
+
+class Base2{
+public:
+    virtual void print() {std::cout << "Base2::print()" << std::endl;}
+    virtual ~Base2() { std::cout << "Base2::~Base2()" << std::endl;}
+};
+
+class D1 : public Base1{
+public:
+    virtual void print() {std::cout << "D1::print()" << std::endl;}
+};
+class D2 : public Base2{
+public:
+    virtual void print() {std::cout << "D2::print()" << std::endl;}
+};
+
+class MI : public D1, public D2{
+public:
+    virtual void print() {std::cout << "MI::print()" << std::endl;}
+};
 
 int main(){
 
+Base1 *pb1 = new MI;
+Base2 *pb2 = new MI;
+D1 *pd1 = new MI;
+D2 *pd2 = new MI;
+pb1->print();
+pd1->print();
+pd2->print();
+delete pb2;
+delete pd1;
+delete pd2;
 
 
 }

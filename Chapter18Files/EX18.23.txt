@@ -1,0 +1,43 @@
+18.23)
+
+All are permitted.
+
+X, A, B, C are all accessible sub-parts of a D object.
+
+
+
+18.24)
+
+pb->print() //this is a virtual call which calls Panda::print()
+pb->cuddle() //error because cuddle is not part of ZooAnimal interface
+pb->highlight() //error because highlight is not part of ZooAnimal interface
+pb->toes() //error because toes is not part of ZooAnimal interface
+delete pb //virtual call, so run-time binding, to Panda::~Panda()
+
+
+
+18.25) 
+
+a) //virtual function Base1::print() called. This uses the vptr of the object pb1 points to to 
+access its vtable, to access the function pointer for the KEY Base1::print(). This pointer points 
+to the redefinition of the virtual function in MI. i.e. MI::print() is called. 
+
+b) //virtual function D1::print() called. This uses the vptr of the object pd1 points 
+to to access its vtable, to access  the function pointer for the KEY D1::print(). This 
+pointer points to the redefinition of the virtual function in MI. i.e. MI::print() is called. 
+
+c) //virtual function D2::print() called. This uses the vptr of the object pd1 points 
+to to access its vtable, to access the function pointer for the KEY D2::print(). This 
+pointer points to the redefinition of the virtual function in MI. i.e. MI::print() is called. 
+
+d) //virtual function Base2::~Base2() called. This uses the vptr of the object pd1 points 
+to to access its vtable, to access the function pointer for the KEY Base2::~Base2(). This 
+pointer points to the redefinition of the virtual destructor in MI. i.e. MI::~MI() is called.
+
+e) //virtual function D1::~D1() called. This uses the vptr of the object pd1 points 
+to to access its vtable, to access the function pointer for the KEY D1::~D1(). This 
+pointer points to the redefinition of the virtual destructor in MI. i.e. MI::~MI() is called. 
+
+f) //virtual function D2::~D2() called. This uses the vptr of the object pd1 points 
+to to access its vtable, to access the function pointer for the KEY D2::~D2(). This 
+pointer points to the redefinition of the virtual destructor in MI. i.e. MI::~MI() is called.  

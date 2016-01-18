@@ -44,9 +44,53 @@
 
 
 #include <iostream>
+#include <string>
+#include <vector>
+
+struct Base1 {
+    void print(int) const { std::cout << "Int" << std::endl;} // public by default
+protected:
+    int ival;
+    double dval;
+    char cval;
+private:
+    int *id;
+};
+struct Base2 {
+    void print(double) const { std::cout << "Double" << std::endl;} // public by default
+protected:
+    double fval;
+private:
+    double dval;
+};
+struct Derived : public Base1 {
+    using Base1::print;
+    void print(std::string) const { std::cout << "String" << std::endl;} // public by default
+protected:
+    std::string sval;
+    double dval;
+};
+struct MI : public Derived, public Base2 {
+    using Derived::print;
+    using Base2::print;
+    void print(std::vector<double>) { std::cout << "Vector" << std::endl;} // public by default
+protected:
+    int *ival;
+    std::vector<double> dvec;
+};
 
 int main(){
 
+    MI mi;
+    mi.print(42);
+
+    /*Problem previously: name lookup finds and stops at print(std::vector<double>) declared in MI definition
+    so it attempts to create a vector from the integer literal 42, which is not possible. The intent
+    of the user might be to access void print(int) from Base1. Solutions include:
+
+    1) Using declarations to bring the prints in to scope of MI
+    2) Defining our own version of print(int) in MI to use Base::print(int) which IMO is too laborious.
+    3) Explicitly call the print from Base1 (i.e. mi.Base1::print(42))*/
 
 
 }

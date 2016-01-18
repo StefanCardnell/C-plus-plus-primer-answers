@@ -44,9 +44,49 @@
 
 
 #include <iostream>
+#include <string>
+
+class Class {
+public:
+    Class() {std::cout << "Class default" << std::endl;}
+    Class(const Class&) {std::cout << "Class copy" << std::endl;}
+    Class(int){std::cout << "Class int" << std::endl;}
+};
+
+class Base : public Class {
+public:
+    Base() {std::cout << "Base default" << std::endl;}
+    Base(const Base& b): Class(b) {std::cout << "Base copy" << std::endl;}
+    Base(int i): Class(i) {std::cout << "Base int" << std::endl;}
+};
+class D1 : virtual public Base {
+public:
+    D1(): Base() {std::cout << "D1 default" << std::endl;}
+    D1(const D1& d): Base(d) {std::cout << "D1 copy" << std::endl;}
+    D1(int i): Base(i) {std::cout << "D1 int" << std::endl;}
+};
+class D2 : virtual public Base {
+public:
+    D2(): Base() {std::cout << "D2 default" << std::endl;}
+    D2(const D2& d): Base(d) {std::cout << "D2 copy" << std::endl;}
+    D2(int i): Base(i) {std::cout << "D2 int" << std::endl;}
+};
+class MI : public D1, public D2 {
+public:
+    MI(): Base(), D1(), D2() {std::cout << "MI default" << std::endl;}
+    MI(const MI& d): Base(d), D1(d), D2(d) {std::cout << "MI copy" << std::endl;}
+    MI(int i): Base(i), D1(i), D2(i) {std::cout << "MI int" << std::endl;}
+};
+class Final : public MI, public Class {
+public:
+    Final(): Base(), MI(), Class() {std::cout << "Final default" << std::endl;}
+    Final(const Final& d): Base(d), MI(d) {std::cout << "Final copy" << std::endl;} //Can't use Class copy constructor: ambiguous Base
+    Final(int i): Base(i), MI(i), Class(i) {std::cout << "Final int" << std::endl;}
+};
 
 int main(){
 
+    MI(2);
 
 
 }

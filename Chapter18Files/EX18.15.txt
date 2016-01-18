@@ -8,5 +8,5 @@ A using directive "brings" the namespace in to the scope of the directive. Well,
 since in general a namespace could include definitions which cannot appear in local scope, so
 it brings it in to the first common namespace ancestor of that namespace and the scope of 
 the directive statement. Name conflicts between names from the injected namespace and the scope
-it was injected in to are permitted, but it is ambiguous to use such a name without qualification
-by a scope operator.
+it was injected in to are permitted (unlike declarations), but it is ambiguous to use such a name 
+without qualification by a scope operator.
