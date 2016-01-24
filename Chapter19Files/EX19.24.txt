@@ -1,0 +1,18 @@
+19.24)
+
+
+If we copy:
+
+If discrim is currently STR, then the string sval is copy-assigned by itself.
+If discrim is currently SDA, then the Sales_data sales is copy-assigned by itself.
+Else ival/cval/dval is copy assigned by itself. 
+
+Then discrim is copy assigned by itself.
+
+No destruction will happen because the values of discrim in LHS and RHS are equal. 
+
+
+
+If we move:
+
+Nothing happens, we check for self-assignment and do nothing.

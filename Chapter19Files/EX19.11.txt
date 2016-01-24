@@ -1,0 +1,21 @@
+19.11)
+
+An ordinary pointer holds the address of an object contained within the program.
+
+A pointer to data member does not hold an object's address, dereferencing it does not 
+provide an object we can read/write. Instead a pointer to data member holds an "identification" 
+of a member, dereferencing a pointer-to-member when we also supply a class object identifies 
+a member of a class.
+
+
+
+
+
+Maybe conceptually a pointer-to-member is only part of an address, the part that must be put "added" to the address
+of a class object to seek the member. So when we do 
+
+const string Screen::*p = &Screen::contents
+Screen x
+x*.p;
+
+x*.p "adds" the pointer p on to the address of x to provide the resulting member "contents". 

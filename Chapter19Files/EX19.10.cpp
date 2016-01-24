@@ -32,7 +32,7 @@
 //#include <tuple> //tuple class
 //#include <bitset> //bitset class
 //#include <regex> //regex library
-//#include <random> //random-number engines and random-number distribution classeschar s;
+//#include <random> //random-number engines and random-number distribution classes
 //#include <ctime> //time function which is good in use with random generators
 //#include <typeinfo> //bad_cast exception
 
@@ -43,11 +43,29 @@
 //-D is to define preprocessor variables at the top of files (e.g. -D NDEBUG)
 //-std=c++11 for C++11 support
 
-
 #include <iostream>
+#include <typeinfo>
 
+
+class A { public: virtual ~A() { } };
+class B : public A { /* . . . */ };
+class C : public B { /* . . . */ };
+
+using std::cout; using std::endl;
 
 int main(){
+
+
+    A *pa = new C;
+    cout << typeid(pa).name() << endl;
+
+    C cobj;
+    A& ra = cobj;
+    cout << typeid(&ra).name() << endl;
+
+    B *px = new B;
+    A& ra1 = *px;
+    cout << typeid(ra1).name() << endl;
 
 
 

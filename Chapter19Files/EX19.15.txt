@@ -1,0 +1,17 @@
+19.15)
+
+Similar to member question:
+
+An ordinary function pointer holds the address of an object contained within the program.
+
+A pointer to member function does not hold an function's address, dereferencing it does not 
+provide a function we can call. Instead a pointer to member function holds an "identification" 
+of a member function, dereferencing a pointer-to-member when we also supply a class object calls (if
+we supply the call operator) the function to which the pointer identifies.
+
+Another main difference is that there is no automatic conversion between a member function and a pointer
+to that member, unlike ordinary function pointers. We must explictly supply the address-of operator & to
+a member function.
+
+Slight difference is that we must supply const or reference qualifiers to the type of function-pointers
+if necessary.

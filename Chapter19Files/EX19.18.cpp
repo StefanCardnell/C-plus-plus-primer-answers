@@ -32,7 +32,7 @@
 //#include <tuple> //tuple class
 //#include <bitset> //bitset class
 //#include <regex> //regex library
-//#include <random> //random-number engines and random-number distribution classeschar s;
+//#include <random> //random-number engines and random-number distribution classes
 //#include <ctime> //time function which is good in use with random generators
 //#include <typeinfo> //bad_cast exception
 
@@ -43,11 +43,33 @@
 //-D is to define preprocessor variables at the top of files (e.g. -D NDEBUG)
 //-std=c++11 for C++11 support
 
-
 #include <iostream>
-
+#include <vector>
+#include <string>
+#include <functional>
+#include <algorithm>
 
 int main(){
+
+    std::vector<std::string> v = {"hello", "", "we", "will", "", "we", "will", "", "rock", "you", ""};
+    std::vector<std::string*> w;
+
+    for(auto& c : v)
+        w.push_back(&c);
+
+    std::function<bool (const std::string&)> f1 = &std::string::empty;
+    std::function<bool (const std::string*)> f2 = &std::string::empty;
+    auto g = std::mem_fn(&std::string::empty);
+    auto h = std::bind(&std::string::empty, std::placeholders::_1);
+
+    std::cout << count_if(v.begin(), v.end(), f1) << std::endl;
+    std::cout << count_if(w.begin(), w.end(), f2) << std::endl;
+
+    std::cout << count_if(v.begin(), v.end(), g) << std::endl;
+    std::cout << count_if(w.begin(), w.end(), g) << std::endl;
+
+    std::cout << count_if(v.begin(), v.end(), h) << std::endl;
+    std::cout << count_if(w.begin(), w.end(), h) << std::endl;
 
 
 

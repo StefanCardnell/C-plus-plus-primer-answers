@@ -32,7 +32,7 @@
 //#include <tuple> //tuple class
 //#include <bitset> //bitset class
 //#include <regex> //regex library
-//#include <random> //random-number engines and random-number distribution classeschar s;
+//#include <random> //random-number engines and random-number distribution classes
 //#include <ctime> //time function which is good in use with random generators
 //#include <typeinfo> //bad_cast exception
 
@@ -43,11 +43,28 @@
 //-D is to define preprocessor variables at the top of files (e.g. -D NDEBUG)
 //-std=c++11 for C++11 support
 
-
 #include <iostream>
 
+class Screen {
+public:
+    typedef std::string::size_type pos;
+    char get_cursor() const { return contents[cursor]; }
+    char get() const { return 0;}
+    char get(pos ht, pos wd) const { return 0;}
+private:
+    std::string contents;
+    pos cursor;
+    pos height, width;
+};
 
 int main(){
+
+    typedef char (Screen::* noParam)() const;
+    typedef char (Screen::* twoParam)(Screen::pos, Screen::pos) const;
+
+    noParam x = &Screen::get_cursor;
+    noParam y = &Screen::get;
+    twoParam z = &Screen::get;
 
 
 

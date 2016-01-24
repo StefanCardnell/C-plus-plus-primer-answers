@@ -1,0 +1,10 @@
+EX 19.10)
+
+Predictions:
+
+a) pa is a pointer. It will output the name for the pointer to A.
+
+b) &ra static type is a pointer to A. So it will again output the name for pointer to A.
+
+c) This will wait to runtime to find out the type of ra, which has static type reference-to-A
+but a dynamic type of type B. So it will output the name for class B.

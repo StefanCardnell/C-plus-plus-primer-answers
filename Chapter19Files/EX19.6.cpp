@@ -32,7 +32,7 @@
 //#include <tuple> //tuple class
 //#include <bitset> //bitset class
 //#include <regex> //regex library
-//#include <random> //random-number engines and random-number distribution classeschar s;
+//#include <random> //random-number engines and random-number distribution classes
 //#include <ctime> //time function which is good in use with random generators
 //#include <typeinfo> //bad_cast exception
 
@@ -43,12 +43,31 @@
 //-D is to define preprocessor variables at the top of files (e.g. -D NDEBUG)
 //-std=c++11 for C++11 support
 
-
 #include <iostream>
+#include <typeinfo>
+#include "Query.h"
 
+void castAndConfirm(Query_Base* p){
+
+    if(typeid(*p) == typeid(AndQuery)){
+        std::cout << "Type IDs equal." << std::endl;
+        AndQuery* q = dynamic_cast<AndQuery*>(p); //only reason I can see this failing it is p is a nullptr
+        if(q) std::cout << "Conversion success." << std::endl;
+        else std::cout << "Unsuccessful conversion." << std::endl;
+    } else std::cout << "Type ID was not equal to AndQuery." << std::endl;
+
+}
 
 int main(){
 
+    Query a("hello"), b("dude");
+
+    Query_Base* p = new AndQuery(a,b);
+
+    Query_Base* q = new OrQuery(a,b);
+
+    castAndConfirm(p);
+    castAndConfirm(q);
 
 
 }

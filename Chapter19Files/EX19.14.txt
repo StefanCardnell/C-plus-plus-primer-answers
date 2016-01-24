@@ -1,0 +1,13 @@
+19.14)
+
+This should be fine.
+
+auto pmf = &Screen::get_cursor deduces the type of auto as "char Screen::*() const" and sets pmf to the address of
+Screen::get_cursor.
+
+Next:
+
+pmf = &Screen::get
+
+Although get is overloaded, the address of the zero-argument version of get is assigned to pmf because it has 
+the same type as pmf and Screen::get_cursor. Both return char, have zero arguments and are const member functions. 

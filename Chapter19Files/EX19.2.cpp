@@ -32,9 +32,8 @@
 //#include <tuple> //tuple class
 //#include <bitset> //bitset class
 //#include <regex> //regex library
-//#include <random> //random-number engines and random-number distribution classeschar s;
+//#include <random> //random-number engines and random-number distribution classes
 //#include <ctime> //time function which is good in use with random generators
-//#include <typeinfo> //bad_cast exception
 
 //difference_type (iterator arithmetic) and ::size_type are for strings/vectors
 //ptrdiff_t (pointer arithmetic) and size_t are for built-in arrays (inside cstddef headers!)
@@ -43,13 +42,29 @@
 //-D is to define preprocessor variables at the top of files (e.g. -D NDEBUG)
 //-std=c++11 for C++11 support
 
-
 #include <iostream>
+#include <cstdlib>
+#include <new>
+#include "strVec.h"
 
+void* operator new(std::size_t s){
+    std::cout << "Custom new" << std::endl;
+    if(void* mem = malloc(s))
+        return mem;
+    else throw std::bad_alloc();
+
+}
+
+void operator delete(void* p) noexcept {
+    std::cout << "Custom delete" << std::endl;
+    free(p);
+}
 
 int main(){
 
+    strVec a;
 
+    a.push_back("hello");
 
 }
 

@@ -32,7 +32,7 @@
 //#include <tuple> //tuple class
 //#include <bitset> //bitset class
 //#include <regex> //regex library
-//#include <random> //random-number engines and random-number distribution classeschar s;
+//#include <random> //random-number engines and random-number distribution classes
 //#include <ctime> //time function which is good in use with random generators
 //#include <typeinfo> //bad_cast exception
 
@@ -43,11 +43,17 @@
 //-D is to define preprocessor variables at the top of files (e.g. -D NDEBUG)
 //-std=c++11 for C++11 support
 
-
 #include <iostream>
-
+#include <string>
+#include "Sales_data.h"
 
 int main(){
+
+
+    const std::string Sales_data::* p = Sales_data::bookNo;
+
+    /*bookNo is private though so this won't compile, there is no way to set the pointer unless we provided
+    a static member function to do so*/
 
 
 

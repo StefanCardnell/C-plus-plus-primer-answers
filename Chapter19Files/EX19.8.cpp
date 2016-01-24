@@ -32,7 +32,7 @@
 //#include <tuple> //tuple class
 //#include <bitset> //bitset class
 //#include <regex> //regex library
-//#include <random> //random-number engines and random-number distribution classeschar s;
+//#include <random> //random-number engines and random-number distribution classes
 //#include <ctime> //time function which is good in use with random generators
 //#include <typeinfo> //bad_cast exception
 
@@ -43,13 +43,32 @@
 //-D is to define preprocessor variables at the top of files (e.g. -D NDEBUG)
 //-std=c++11 for C++11 support
 
-
 #include <iostream>
+#include <typeinfo>
+#include "Query.h"
 
+void comparePointer(Query_Base* p, Query_Base* q){
+
+    if(typeid(*p) == typeid(*q)){
+        std::cout << "Both point to the same type." << std::endl;
+        if(typeid(*p) == typeid(AndQuery)) std::cout << "Both point to AndQuery objects." << std::endl;
+        else std::cout << "These pointers do not point to AndQuery objects." << std::endl;
+    } else std::cout << "Pointers point to different object types." << std::endl;
+
+}
 
 int main(){
 
+    Query a("hello"), b("dude");
 
+    Query_Base* p = new AndQuery(a,b);
+    Query_Base* q = new OrQuery(a,b);
+    Query_Base* r = new OrQuery(a,b);
+    Query_Base* s = new AndQuery(a,b);
+
+    comparePointer(p,q);
+    comparePointer(q,r);
+    comparePointer(p,s);
 
 }
 

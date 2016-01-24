@@ -1,0 +1,27 @@
+19.3)
+
+Predictions:
+
+"In all cases, the type of e must be either a class type that is publicly derived from
+the target type, a public base class of the target type, or the same as the target
+type."
+
+a) A is a public base class of B so this is not a compile time error. Pa points to a C 
+object at runtime, which contains a B subobject. This should be a valid cast.  
+
+b) Not a valid conversion, pc is 0. This is because pb points to a B object at runtime 
+and so there is no C subpart to point to.
+
+c) A* pa = new D should fail because A is an ambiguous base of D. 
+
+If we make both the A inheritences virtual then A is a public base class of B, pa points
+to a D object which contains a single B subobject and so this code does not throw an error.
+
+Probably best to read cppreference:
+
+http://en.cppreference.com/w/cpp/language/dynamic_cast
+
+"The most derived object pointed/identified by expression is examined. If, in that object, 
+expression points/refers to a public base of Derived, and if only one subobject of Derived 
+type is derived from the subobject pointed/identified by expression, then the result of the 
+cast points/refers to that Derived subobject. (This is known as a "downcast".)"

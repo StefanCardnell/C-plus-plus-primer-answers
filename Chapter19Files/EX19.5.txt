@@ -1,0 +1,6 @@
+19.5)
+
+It is always best to define a virtual function rather than using dynamic casts. However dynamic casts 
+are needed when we need to call a derived class member function that, for whatever reason, we cannot make 
+virtual and the pointer/reference we wish to call it from has (we suspect) a dynamic type of this derived 
+class. 

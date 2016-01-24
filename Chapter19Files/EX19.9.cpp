@@ -32,7 +32,7 @@
 //#include <tuple> //tuple class
 //#include <bitset> //bitset class
 //#include <regex> //regex library
-//#include <random> //random-number engines and random-number distribution classeschar s;
+//#include <random> //random-number engines and random-number distribution classes
 //#include <ctime> //time function which is good in use with random generators
 //#include <typeinfo> //bad_cast exception
 
@@ -43,11 +43,69 @@
 //-D is to define preprocessor variables at the top of files (e.g. -D NDEBUG)
 //-std=c++11 for C++11 support
 
-
 #include <iostream>
+#include <string>
+#include <typeinfo>
+#include <typeindex>
+#include <map>
+#include <vector>
 
+/*So there's only two ways I could see this being possible
+
+    1. Create iPhone level of autocorrect to change the output of type_info::name to remove numbers, underscores, identify the proper
+    name, etc. in order to produce the correct name. This is laborious and absurd.
+    2. If I cannot automatically generate the correct names, then I must keep a list to match each output of typeid to its proper name which
+    indicates the use of a map (match each typeid key with a string). Unfortunately I'm not sure how to do this for every single array
+    size and it also requires me to know the types beforehand. So the following is the "best I can do", the only way to put typeinfo objects
+    in to a map is to use typeindex instead (see cppreference), since typeinfo is not default/copy constructible and cannot be used as a key.
+
+*/
+
+
+
+class Base{
+public:
+    virtual ~Base() {}
+};
+
+class Derived: public Base { };
+
+const std::string& proper_name(const std::type_info& t){
+
+    static const std::string noResult = "Type could not be identified.";
+
+    static const std::map<std::type_index, std::string> names = {
+        {typeid(int), "int"}, {typeid(double), "double"}, {typeid(float), "float"}, {typeid(char), "char"},
+        {typeid(Base), "Base"}, {typeid(Derived), "Derived"}, {typeid(std::string), "String"},
+        {typeid(int[10]), "Ten int Array"}, {typeid(Base*), "Base Pointer"}
+    };
+
+
+    auto it = names.find(t);
+
+    if(it != names.end()){
+        return (*it).second;
+    }
+    else return noResult;
+
+
+}
 
 int main(){
+
+    int arr[10];
+    Derived d;
+    Base *p = &d;
+
+
+    std::cout << proper_name(typeid(42)) << ", "
+              << proper_name(typeid(arr)) << ", "
+              << proper_name(typeid(std::string)) << ", "
+              << proper_name(typeid(p)) << ", "
+              << proper_name(typeid(*p)) << std::endl
+              << proper_name(typeid(unsigned)) << std::endl;
+
+
 
 
 

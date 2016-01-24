@@ -1,0 +1,19 @@
+19.26)
+
+These are declarations for functions with C language linkage. Any C files compiled with this source
+file will be searched for the corresponding definitions of these functions to be linked at link time.
+C++ files will also be searched, as they can define "C" language linkage functions by providing "extern "C"" 
+along with a funciton definition.
+
+
+Despite all that however this code is not legal. C does not support function overloading, so it is not 
+possible to declare two functions of C language linkage with the same name because there will be no way 
+to identify the correct one at link time. For more information as to why this is see the answer here:
+
+http://stackoverflow.com/questions/1041866/in-c-source-what-is-the-effect-of-extern-c
+
+"Since C++ has overloading of function names and C does not, the C++ compiler cannot just 
+use the function name as a unique id to link to, so it mangles the name by adding information 
+about the arguments. A C compiler does not need to mangle the name since you can not overload 
+function names in C. When you state that a function has extern "C" linkage in C++, the C++ 
+compiler does not add argument/parameter type information to the name used for linkage."
